@@ -1,0 +1,6 @@
+*~
+CONTAINER_ID
+data/gogs/data/sessions/*
+data/gogs/data/tmp/*
+data//gogs/log/*log
+data/*
