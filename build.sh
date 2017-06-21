@@ -37,8 +37,11 @@ if [[  ! -f id_rsa ]]; then
      -f id_rsa
      
     sed -i '1s;^;no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ;' id_rsa.pub
-    # if we generate a new key wipe all existing ones
-    cat id_rsa.pub > authorized_keys
+    if [[ -f authorized_keys ]]; then
+        cat id_rsa.pub >> authorized_keys
+    else
+        cat id_rsa.pub > authorized_keys
+    fi
 fi
 chmod 0600 id_rsa authorized_keys
 chown -R git: /srv/gogs/data/
